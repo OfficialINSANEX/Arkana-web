@@ -28,3 +28,4 @@ document.querySelectorAll('.headerButtonLeft, .headerButtonRight').forEach(btn =
     if (e.key === 'Enter' || e.key === ' ') btn.click();
   });
 });
+
