@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background: #0b0d12;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: radial-gradient(circle at top, #3a4eff55, #0b0d12);
+}
+
+.hero h1 {
+  font-size: 80px;
+  margin: 0;
+  color: #bfc8ff;
+}
+
+.hero p {
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+.cta a {
+  margin: 20px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: #3a4eff;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cta .secondary {
+  background: transparent;
+  border: 2px solid #3a4eff;
+}
+
+.dashboard-preview {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 80px 20px;
+}
+
+.feature {
+  max-width: 300px;
+  background: #14161d;
+  padding: 20px;
+  border-radius: 12px;
+}
