@@ -1,57 +1,70 @@
-body {
-  margin: 0;
-  background: #0b0d12;
-  color: white;
-  font-family: Arial, sans-serif;
+body{
+    background-image: url("sfondo.png");
+    background-size: cover;
+    background-position: 1% 1%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.hero {
-  text-align: center;
-  padding: 120px 20px;
-  background: radial-gradient(circle at top, #3a4eff55, #0b0d12);
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(1px);
+    padding: 10px 0;
 }
 
-.hero h1 {
-  font-size: 80px;
-  margin: 0;
-  color: #bfc8ff;
+.headerLeft,
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.hero p {
-  font-size: 22px;
-  opacity: 0.8;
+
+.headerButtonLeft{
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.cta a {
-  margin: 20px;
-  padding: 12px 28px;
-  border-radius: 8px;
-  background: #3a4eff;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.headerButtonRight {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: none;
+    animation: borderPulse 1s infinite alternate;
 }
 
-.cta .secondary {
-  background: transparent;
-  border: 2px solid #3a4eff;
+@keyframes borderPulse {
+    0% {
+        border-color: white;
+    }
+    100% {
+        border-color: #777;
+    }
 }
 
-.dashboard-preview {
-  text-align: center;
-  padding: 80px 20px;
+.headerLogo {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 20px;
 }
 
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 80px 20px;
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white;
 }
 
-.feature {
-  max-width: 300px;
-  background: #14161d;
-  padding: 20px;
-  border-radius: 12px;
+h3 {
+    font-size: 0.5rem;
+    margin-bottom: 20px;
+    color: white;
 }
