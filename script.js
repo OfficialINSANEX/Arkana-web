@@ -21,11 +21,11 @@ document.getElementById("PricingButton").addEventListener("click", () => scrollT
 document.getElementById("ResourcesButton").addEventListener("click", () => scrollToSection("resources"));
 document.getElementById("CommunityButton").addEventListener("click", () => scrollToSection("community"));
 document.getElementById("DownloadButton").addEventListener("click", () => scrollToSection("download"));
+document.getElementById("download-windows").onclick = () => window.open('https://drive.google.com/file/d/1UOHOwdWfPbdnHsjTdZpgAkBb3AwJPbHG/view?usp=sharing', '_blank');
+document.getElementById("download-mac").onclick = () => alert('Mac version is coming soon!');
 
-// keyboard accessibility
-document.querySelectorAll('.headerButtonLeft, .headerButtonRight').forEach(btn => {
-  btn.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') btn.click();
-  });
-});
+
+
+
+
 

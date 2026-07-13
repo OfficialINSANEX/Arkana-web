@@ -1,96 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Arkana</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <title>Arkana</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+    <div id="cursorGlow"></div>
 
-  <!-- HEADER fixed -->
-  <header class="header" role="banner">
+    <!-- HEADER fixed -->
+    <header class="header" role="banner">
     <div class="headerLeft">
-      <img src="logo.png" alt="Arkana Logo" class="headerLogo" />
-      <button class="headerButtonLeft" id="HomeButton">Home</button>
-      <button class="headerButtonLeft" id="PricingButton">Pricing</button>
-      <button class="headerButtonLeft" id="ResourcesButton">Resources</button>
-      <button class="headerButtonLeft" id="CommunityButton">Community</button>
-      <button class="headerButtonLeft" id="DownloadButton">Download</button>
+        <img src="logo.png" alt="Arkana Logo" class="headerLogo" />
     </div>
 
-    <div class="headerRight">
-      <button class="headerButtonRight" id="SignInButton">Sign In</button>
-      <button class="headerButtonRight" id="SignoutButton">Sign Out</button>
+    <div class="headerCenter">
+        <button class="headerButtonLeft" id="HomeButton">Home</button>
+        <button class="headerButtonLeft" id="PricingButton">Pricing</button>
+        <button class="headerButtonLeft" id="ResourcesButton">Resources</button>
+        <button class="headerButtonLeft" id="CommunityButton">Community</button>
+        <button class="headerButtonLeft" id="DownloadButton">Download</button>
     </div>
-  </header>
+</header>
 
-  <main>
-    <!-- HERO: image left, text right, text vertically centered relative to image -->
-    <section id="hero" class="section hero" aria-label="Hero">
-      <div class="heroInner">
-        <div class="heroMedia">
-          <img src="sfondo.png" alt="Hero image" class="heroImage" />
-        </div>
-        <div class="heroText">
-          <h1>Arkana App</h1>
-          <h3>The Arkana App helps you stay organized and productive.</h3>
-        </div>
-      </div>
-    </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="section" aria-label="Pricing">
-      <div class="sectionInner">
-        <h2 class="sectionTitle">Pricing</h2>
-        <div class="pricingContainer">
-          <div class="pricingCard">
-            <h3>Free</h3>
-            <p>• Basic workspace<br>• Limited tabs<br>• No sync</p>
-          </div>
+    <main>
+        <!-- HERO: image left, text right, text vertically centered relative to image -->
+        <section id="hero" class="section hero" aria-label="Hero">
+            <div class="heroInner">
+                <div class="heroMedia">
+                    <img src="sfondo.png" alt="Hero image" class="heroImage" />
+                </div>
+                <div class="heroText">
+                    <h1>Arkana App</h1>
+                    <h3>The Arkana App helps you stay organized and productive.</h3>
+                </div>
+            </div>
+        </section>
 
-          <div class="pricingCard">
-            <h3>Pro</h3>
-            <p>• Unlimited tabs<br>• Sync devices<br>• Custom themes</p>
-          </div>
+        <!-- PRICING -->
+        <section id="pricing" class="section" aria-label="Pricing">
+            <div class="sectionInner">
+                <h2 class="sectionTitle">Pricing</h2>
+                <div class="pricingContainer">
+                    <div class="pricingCard free">
+                        <h3>Free Plan</h3>
+                        <p>• Basic workspace<br>• Limited tabs<br>• No sync<br></p>
+                        <div class="priceBox">• Free</div>
+                    </div>
 
-          <div class="pricingCard">
-            <h3>Ultra</h3>
-            <p>• Everything in Pro<br>• AI automation<br>• Priority support</p>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="pricingCard pro">
+                        <h3>Pro Plan</h3>
+                        <p>• Unlimited tabs<br>• Sync devices<br>• Custom themes<br></p>
+                        <div class="priceBox">• 9.99$/month</div>
+                    </div>
 
-    <!-- RESOURCES -->
-    <section id="resources" class="section" aria-label="Resources">
-      <div class="sectionInner">
-        <h2 class="sectionTitle">Resources</h2>
-        <p class="sectionText">Documentation, tutorials, guides, API references. (Placeholder)</p>
-      </div>
-    </section>
+                    <div class="pricingCard ultra">
+                        <h3>Autistic Plan</h3>
+                        <p>• Everything in Pro<br>• AI automation<br>• Priority support<br></p>
+                        <div class="priceBox">• 199.99$/month</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- COMMUNITY -->
-    <section id="community" class="section" aria-label="Community">
-      <div class="sectionInner">
-        <h2 class="sectionTitle">Community</h2>
-        <p class="sectionText">Join our Discord server. (Placeholder)</p>
-      </div>
-    </section>
+        <!-- RESOURCES -->
+        <section id="resources" class="section" aria-label="Resources">
+            <div class="sectionInner">
+                <h2 class="sectionTitle">Resources</h2>
+                <p class="sectionText">Documentation, tutorials, guides, API references. (Placeholder)</p>
+                <img src="documentation.png" alt="">
+            </div>
+        </section>
 
-    <!-- DOWNLOAD -->
-    <section id="download" class="section" aria-label="Download">
-      <div class="sectionInner">
-        <h2 class="sectionTitle">Download Arkana</h2>
-        <div class="downloadRow">
-          <button class="downloadButton" id="download-windows">Download for Windows</button>
-          <button class="downloadButton" id="download-mac">Download for Mac</button>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- COMMUNITY -->
+        <section id="community" class="section" aria-label="Community">
+            <div class="sectionInner">
+                <h2 class="sectionTitle">Community</h2>
+                <p class="sectionText">Join our Discord server. (Placeholder)</p>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- DOWNLOAD -->
+        <section id="download" class="section" aria-label="Download">
+            <div class="sectionInner">
+                <h2 class="sectionTitle">Download Arkana</h2>
+                <div class="downloadRow">
+                    <button class="downloadButton" id="download-windows">Download for Windows</button>
+                    <button class="downloadButton" id="download-mac">Download for Mac</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="comet-border.js"></script>
 </body>
-</html>
 
+</html>
