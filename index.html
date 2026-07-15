@@ -1,108 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>Arkana</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="icon" type="image/svg+xml" href="svg/ArkanaWhite.svg">
+    <title>Arkana — Fast, secure and clean browser</title>
+    <meta name="description" content="Arkana is a fast, secure and clean web browser that's not like all the others." />
+    <link rel="icon" type="image/svg+xml" href="svg/Arkana02.svg">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="cursorGlow"></div>
-
-    <!-- HEADER fixed -->
-    <header class="header" role="banner">
-        <div class="headerLeft">
-            <svg width="60" height="60" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg"> 
-                <path d="M120 40L190 200H160L120 120L80 200H50L120 40Z" fill="white" />
-            </svg>
-            
-        </div>
-
-        <div class="headerCenter">
-            <button class="headerButtonLeft" id="HomeButton">Home</button>
-            <button class="headerButtonLeft" id="PricingButton">Pricing</button>
-            <button class="headerButtonLeft" id="ResourcesButton">Resources</button>
-            <button class="headerButtonLeft" id="CommunityButton">Community</button>
-            <button class="headerButtonLeft" id="DownloadButton">Download</button>
-        </div>
-    </header>
-
-
-
-
 
     <main>
-        <!-- HERO: image left, text right, text vertically centered relative to image -->
-        <section id="hero" class="section hero" aria-label="Hero">
+        <!-- HERO -->
+        <section id="hero" class="section">
+            <div class="hero-bg"></div>
             <div class="heroInner">
                 <div class="heroMedia">
-                    <img src="arkana.png" alt="Hero image" class="heroImage" />
+                    <img src="arkana.png" alt="Arkana browser interface preview" class="heroImage" id="heroImage"
+                        loading="eager">
                 </div>
                 <div class="heroText">
-                    <h1>Arkana App</h1>
-                    <h3>The Arkana App helps you stay organized and productive.</h3>
+                    <h1>Arkana — Fast, secure and clean</h1>
+                    <h3>A fast, secure and clean web browser that's not like all the others. Currently in Beta for
+                        Windows only.</h3>
+
+                    <div class="heroCtas">
+                        <a class="ctaPrimary" href="#download">Download Beta for Windows</a>
+                        <a class="ctaGhost" href="#pricing">See plans</a>
+                    </div>
+
+                    <ul class="heroBullets">
+                        <li>Lightweight and privacy focused</li>
+                        <li>Sync across devices coming soon</li>
+                        <li>Productivity features built for power users</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- PRICING -->
-        <section id="pricing" class="section" aria-label="Pricing">
+        <section id="pricing" class="section">
             <div class="sectionInner">
-                <h2 class="sectionTitle">Pricing</h2>
+                <h2 class="sectionTitle reveal">Plans</h2>
+                <p class="sectionText reveal reveal-delay-1">Try Arkana Beta free. Upgrade for advanced features and
+                    priority support.</p>
+
                 <div class="pricingContainer">
-                    <div class="pricingCard free">
-                        <h3>Free Plan</h3>
-                        <p>• Basic workspace<br>• Limited tabs<br>• No sync<br></p>
-                        <div class="priceBox">• Free</div>
-                    </div>
+                    <article class="pricingCard reveal" style="--runner-duration: 8s">
+                        <h3>Free</h3>
+                        <div class="cardContent">
+                            <p>Basic browsing features, privacy defaults, and essential productivity tools.</p>
+                            <ul>
+                                <li>Ad blocking defaults</li>
+                                <li>Tab grouping and quick notes</li>
+                                <li>Lightweight memory footprint</li>
+                            </ul>
+                        </div>
+                        <div class="priceBox">Free</div>
+                    </article>
 
-                    <div class="pricingCard pro">
-                        <h3>Pro Plan</h3>
-                        <p>• Unlimited tabs<br>• Sync devices<br>• Custom themes<br></p>
-                        <div class="priceBox">• 9.99$/month</div>
-                    </div>
+                    <article class="pricingCard reveal" style="--runner-duration: 5s">
+                        <h3>Pro</h3>
+                        <div class="cardContent">
+                            <p>Advanced productivity tools, themes, and early sync access.</p>
+                            <ul>
+                                <li>Multi-device sync (early access)</li>
+                                <li>Custom themes and layouts</li>
+                                <li>Priority updates</li>
+                            </ul>
+                        </div>
+                        <div class="priceBox">$9.99 / month</div>
+                    </article>
 
-                    <div class="pricingCard ultra">
-                        <h3>Autistic Plan</h3>
-                        <p>• Everything in Pro<br>• AI automation<br>• Priority support<br></p>
-                        <div class="priceBox">• 199.99$/month</div>
-                    </div>
+                    <article class="pricingCard reveal" style="--runner-duration: 3s">
+                        <h3>Enterprise</h3>
+                        <div class="cardContent">
+                            <p>AI automations, integrations, and priority support for teams.</p>
+                            <ul>
+                                <li>AI automation workflows</li>
+                                <li>SSO and enterprise policies</li>
+                                <li>Dedicated support</li>
+                            </ul>
+                        </div>
+                        <div class="priceBox">$199.99 / year</div>
+                    </article>
                 </div>
-            </div>
-        </section>
-
-        <!-- RESOURCES -->
-        <section id="resources" class="section" aria-label="Resources">
-            <div class="sectionInner">
-                <h2 class="sectionTitle">Resources</h2>
-                <p class="sectionText">Documentation, tutorials, guides, API references. (Placeholder)</p>
-                <img src="documentation.png" alt="">
             </div>
         </section>
 
         <!-- COMMUNITY -->
-        <section id="community" class="section" aria-label="Community">
+        <section id="community" class="section">
             <div class="sectionInner">
-                <h2 class="sectionTitle">Community</h2>
-                <p class="sectionText">Join our Discord server. (Placeholder)</p>
+                <h2 class="sectionTitle reveal">Community</h2>
+                <p class="sectionText reveal reveal-delay-1">Join our Discord to get templates, tips, and early feature
+                    previews.</p>
+                <img src="images/community-discord.png" alt="Arkana Discord preview"
+                    class="sectionImage reveal reveal-delay-2">
+                <div style="margin-top:30px;">
+                    <button class="joinButton reveal reveal-delay-3" id="join-discord">Join Discord</button>
+                </div>
             </div>
         </section>
 
         <!-- DOWNLOAD -->
-        <section id="download" class="section" aria-label="Download">
+        <section id="download" class="section">
             <div class="sectionInner">
-                <h2 class="sectionTitle">Download Arkana</h2>
+                <h2 class="sectionTitle reveal">Download Arkana</h2>
+                <p class="sectionText reveal reveal-delay-1">Stable Beta for Windows. Mac and Linux versions coming
+                    soon.</p>
+
                 <div class="downloadRow">
-                    <button class="downloadButton" id="download-windows">Download for Windows</button>
-                    <button class="downloadButton" id="download-mac">Download for Mac</button>
+                    <button class="downloadButton reveal" id="download-windows">Download for Windows</button>
+                    <button class="downloadButton reveal reveal-delay-1" id="download-mac">Request Mac Beta</button>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="section">
+        <div class="sectionInner">
+            <p>© <span id="year"></span> Arkana — Built for focus.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script src="comet-border.js"></script>

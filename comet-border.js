@@ -1,10 +1,10 @@
 // ---------- Animated Comet Border (SVG path-length based) ----------
 (function () {
-  const STROKE_WIDTH   = 1.6;   // spessore del bordo (px)
-  const NUM_SLICES     = 36;    // numero di segmenti che compongono la scia
-  const TRAIL_FRACTION = 0.30;  // % del perimetro coperta dalla scia
-  const OVERLAP        = 1.5;   // sovrapposizione tra segmenti adiacenti (elimina gap)
-  const GLOW_BLUR      = 3.2;   // stdDeviation del glow
+  const STROKE_WIDTH   = 1.6;
+  const NUM_SLICES     = 36;
+  const TRAIL_FRACTION = 0.30;
+  const OVERLAP        = 1.5;
+  const GLOW_BLUR      = 3.2;
 
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -31,14 +31,23 @@
       this.duration = (dur || 3) * 1000;
       this._buildDom();
       this._layout();
-      this._start = performance.now() + Math.random() * this.duration; // desincronizza card identiche
+      this._start = performance.now() + Math.random() * this.duration;
       this._raf = requestAnimationFrame(this._tick.bind(this));
     }
 
     _buildDom() {
       const svg = document.createElementNS(SVG_NS, "svg");
-      svg.setAttribute("class", "runner-svg");
       svg.setAttribute("preserveAspectRatio", "none");
+
+      // style svg so it doesn't affect layout and sits outside the card bounds
+      svg.setAttribute("class", "runner-svg");
+      svg.style.position = "absolute";
+      svg.style.inset = "-8px";
+      svg.style.width = "calc(100% + 16px)";
+      svg.style.height = "calc(100% + 16px)";
+      svg.style.pointerEvents = "none";
+      svg.style.overflow = "visible";
+      svg.style.zIndex = "0";
 
       const defs = document.createElementNS(SVG_NS, "defs");
       const filter = document.createElementNS(SVG_NS, "filter");
@@ -54,20 +63,20 @@
       defs.appendChild(filter);
       svg.appendChild(defs);
 
-      // binario statico, molto tenue (tocco premium opzionale)
+      // track path (subtle)
       this.trackPath = document.createElementNS(SVG_NS, "path");
       this.trackPath.setAttribute("fill", "none");
       this.trackPath.setAttribute("stroke", "rgba(255,255,255,0.05)");
       this.trackPath.setAttribute("stroke-width", STROKE_WIDTH);
       svg.appendChild(this.trackPath);
 
-      // gruppo glow (sfocato, dietro alla scia nitida)
+      // glow group
       this.glowGroup = document.createElementNS(SVG_NS, "g");
       this.glowGroup.setAttribute("filter", `url(#${filterId})`);
       this.glowGroup.setAttribute("opacity", "0.9");
       svg.appendChild(this.glowGroup);
 
-      // gruppo scia nitida
+      // sharp group
       this.sharpGroup = document.createElementNS(SVG_NS, "g");
       svg.appendChild(this.sharpGroup);
 
@@ -75,7 +84,7 @@
       this.glowSlices = [];
       for (let i = 0; i < NUM_SLICES; i++) {
         const t = i / (NUM_SLICES - 1);
-        const opacity = Math.pow(1 - t, 2.2); // curva di dissolvenza
+        const opacity = Math.pow(1 - t, 2.2);
 
         const p = document.createElementNS(SVG_NS, "path");
         p.setAttribute("fill", "none");
@@ -86,7 +95,6 @@
         this.sharpGroup.appendChild(p);
         this.slices.push(p);
 
-        // solo i segmenti vicino alla testa alimentano il glow
         if (t < 0.55) {
           const g = document.createElementNS(SVG_NS, "path");
           g.setAttribute("fill", "none");
@@ -99,7 +107,7 @@
         }
       }
 
-      // punto luminoso netto in testa
+      // head dot and glow
       this.headDot = document.createElementNS(SVG_NS, "circle");
       this.headDot.setAttribute("r", STROKE_WIDTH * 1.1);
       this.headDot.setAttribute("fill", "#fff");
@@ -113,13 +121,15 @@
       this.headGlow = headGlow;
 
       this.svg = svg;
-      this.card.appendChild(svg);
+
+      // insert svg as first child so it sits behind content and outside bounds
+      this.card.insertBefore(svg, this.card.firstChild);
     }
 
     _layout() {
       const w = this.card.offsetWidth;
       const h = this.card.offsetHeight;
-      const pad = 4; // combacia con CSS inset:-4px
+      const pad = 8; // matches inset used above
       const vbW = w + pad * 2;
       const vbH = h + pad * 2;
       this.svg.setAttribute("viewBox", `0 0 ${vbW} ${vbH}`);

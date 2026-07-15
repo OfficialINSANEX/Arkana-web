@@ -1,31 +1,72 @@
-// Scroll with header fixed offset
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
+(function () {
 
-  // read header height from CSS variable
-  const root = getComputedStyle(document.documentElement);
-  const headerHeight = parseInt(root.getPropertyValue('--header-height')) || 88;
+  // Dynamic Header
+  function createHeader() {
+    const header = document.createElement('header');
+    header.className = 'header';
+    header.innerHTML = `
+      <div class="headerLeft">
+        <a href="#hero"><img src="svg/Arkana02.svg" alt="Arkana" class="headerLogo"></a>
+      </div>
+      <nav class="headerCenter">
+        <button class="headerButtonLeft" data-target="hero">Home</button>
+        <button class="headerButtonLeft" data-target="pricing">Plans</button>
+        <button class="headerButtonLeft" data-target="community">Community</button>
+        <button class="headerButtonLeft headerButtonPrimary" data-target="download">Download</button>
+      </nav>
+    `;
+    document.body.insertBefore(header, document.body.firstChild);
+  }
 
-  const rect = el.getBoundingClientRect();
-  const absoluteTop = window.scrollY + rect.top;
+  // Scroll
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  }
 
-  // target so section top sits just below fixed header
-  const target = Math.max(0, absoluteTop - headerHeight - 8);
+  // Reveal
+  function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.15 });
 
-  window.scrollTo({ top: target, behavior: 'smooth' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  // Init
+  function init() {
+    createHeader();
+
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', () => scrollTo(btn.dataset.target));
+    });
+
+    document.getElementById('download-windows')?.addEventListener('click', () => {
+      window.open('https://drive.google.com/file/d/1UOHOwdWfPbdnHsjTdZpgAkBb3AwJPbHG/view?usp=sharing', '_blank');
+    });
+
+    document.getElementById('join-discord')?.addEventListener('click', () => {
+      window.open('https://discord.gg/NdmUCByGc6', '_blank');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    initReveal();
+  }
+
+  document.readyState === "loading" ? 
+    document.addEventListener("DOMContentLoaded", init) : init();
+
+})();
+
+// Click sull'immagine hero → vai a Download
+const heroImg = document.getElementById('heroImage');
+if (heroImg) {
+    heroImg.style.cursor = 'pointer';
+    heroImg.addEventListener('click', () => {
+        document.getElementById('download').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 }
-
-document.getElementById("HomeButton").addEventListener("click", () => scrollToSection("hero"));
-document.getElementById("PricingButton").addEventListener("click", () => scrollToSection("pricing"));
-document.getElementById("ResourcesButton").addEventListener("click", () => scrollToSection("resources"));
-document.getElementById("CommunityButton").addEventListener("click", () => scrollToSection("community"));
-document.getElementById("DownloadButton").addEventListener("click", () => scrollToSection("download"));
-document.getElementById("download-windows").onclick = () => window.open('https://drive.google.com/file/d/1UOHOwdWfPbdnHsjTdZpgAkBb3AwJPbHG/view?usp=sharing', '_blank');
-document.getElementById("download-mac").onclick = () => alert('Mac version is coming soon!');
-
-
-
-
-
 
