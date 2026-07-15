@@ -59,7 +59,7 @@
 
 })();
 
-// Click sull'immagine hero → vai a Download
+// Hero image click → Download
 const heroImg = document.getElementById('heroImage');
 if (heroImg) {
     heroImg.style.cursor = 'pointer';
@@ -70,3 +70,49 @@ if (heroImg) {
     });
 }
 
+/* ========================= */
+/* PRICE FLIP ANIMATION      */
+/* ========================= */
+
+function animatePrice(id, newPrice) {
+    const box = document.getElementById(id);
+    const span = box.querySelector(".priceFlip span");
+
+    box.classList.add("animating");
+
+    setTimeout(() => {
+        span.textContent = newPrice;
+        box.classList.remove("animating");
+    }, 300);
+}
+
+// Setup initial flip structure
+["pro-price", "enterprise-price"].forEach(id => {
+    const el = document.getElementById(id);
+    const priceText = el.textContent.trim();
+    el.innerHTML = `<div class="priceFlip"><span>${priceText}</span></div>`;
+});
+
+// Pricing Toggle
+function initPricingToggle() {
+    const monthlyBtn = document.getElementById('toggle-monthly');
+    const annualBtn = document.getElementById('toggle-annual');
+
+    monthlyBtn.addEventListener('click', () => {
+        monthlyBtn.classList.add('active');
+        annualBtn.classList.remove('active');
+
+        animatePrice("pro-price", "0.99 € / month");
+        animatePrice("enterprise-price", "4.99 € / month");
+    });
+
+    annualBtn.addEventListener('click', () => {
+        annualBtn.classList.add('active');
+        monthlyBtn.classList.remove('active');
+
+        animatePrice("pro-price", "9.99 € / year");
+        animatePrice("enterprise-price", "199.99 € / year");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", initPricingToggle);
